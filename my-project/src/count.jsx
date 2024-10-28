@@ -1,7 +1,7 @@
 import React from "react";
 
 function Count(){
-     var[x,SetX]=React.useState(0);
+     var[x,SetX]=React.useState(1);
      function increment(){
         SetX(x+1);
      };
