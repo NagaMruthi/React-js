@@ -4,7 +4,7 @@ import Count from './count.jsx';
 function App() {
   return (
     <div className="App">
-      welcome toreact
+      welcome to react 
       <Count></Count>
     </div>
   );
