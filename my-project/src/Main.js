@@ -15,7 +15,7 @@ class Main extends React.Component{
         this.setState({[username]:value})
     });
     abc=(()=>{
-        alert("hi"+"hi");
+        alert("hi");
         console.log(this.state)
 
     })
