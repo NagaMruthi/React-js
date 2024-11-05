@@ -1,16 +1,20 @@
 import React from "react";
 function Demofunction(){
-    var [x,setX]=React.useState([])
-    
+    var [X,setX]=React.useState(
+        {
+            username:"",
+            usermail:"",
+            password:""
+        }
+    )
     function change(event){
         var value=event.target.value
         var name=event.target.name;
-        setX([{...x,[name]:value}]);
-
+        setX({...X,[name]:value});
     }
     function submit(event){
         event.preventDefault();
-        console.log(x);
+        console.log(X);
     }
     return(<div>
         Functional Component
