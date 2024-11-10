@@ -1,15 +1,13 @@
 import React from "react";
 function Child(props){
-    const [x,setX]=React.useState([
-        {
-            name:"maruthi",
-            id:1
-        }
-    ]);
-    props.getdata(x);
+    console.log(props.getdata)
     return(
         <div>
-            Child
+            Child{
+                props.getdata.map((e)=>{
+                    return<div>{e.name}</div>
+                })
+            }
         </div>
     )
 }

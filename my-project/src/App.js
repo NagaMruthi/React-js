@@ -2,13 +2,16 @@ import './App.css';
 import Child from './Child';
 import React from 'react';
 function App() {
-  var getemp=(emps)=>{
-    console.log(emps);
-  }
+  const [x,setX]=React.useState([
+    {
+        name:"MTS",
+        id:1
+    }
+]);
   return (
     <div className="App">
       Child To Parent
-      <Child getdata={getemp}></Child>
+      <Child getdata={x}></Child>
     </div>
   );
 }
