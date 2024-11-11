@@ -1,23 +1,13 @@
-import logo from './logo.svg';
-import './App.css';
-
+import React from 'react'
+import About from './About';
 function App() {
+  const [x,setX]=React.useState([{
+    name:"maruthi",
+    id:12
+  }])
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <About getdata={x}></About>
     </div>
   );
 }
