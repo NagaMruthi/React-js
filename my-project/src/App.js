@@ -1,9 +1,9 @@
 import './App.css';
-import Empoly from './empoly';
+import Employ from './employ';
 function App() {
   return (
     <div className="App">
-      <Empoly></Empoly>
+      <Employ></Employ>
     </div>
   );
 }

@@ -1,12 +1,12 @@
 import React from 'react'
-export default function Empoly(){
-    const [empoly,SetEmpoly]=React.useState([{
+export default function Employ(){
+    const [employ,SetEmploy]=React.useState([{
         name:"Maruthi"
     }]);
     function abc(){
         const inputs=document.getElementById("in").value;
-        SetEmpoly([...empoly,{name:inputs}]);
-        console.log(empoly);
+        SetEmploy([...employ,{name:inputs}]);
+        console.log(employ);
     }
     return(<>
     <div>
@@ -15,7 +15,7 @@ export default function Empoly(){
     <input type='text' placeholder='Empoly Name' id="in"></input>
     <button onClick={abc}>Add</button>
     <h4>Empoly List</h4>
-    <div>{empoly.map((emp,i)=>{
+    <div>{employ.map((emp,i)=>{
         return(<li>{emp.name}</li>)
     })}</div>
     </>)
