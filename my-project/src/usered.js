@@ -11,7 +11,6 @@ function Reducer(){
                 return{count:state.count-1}
         }
     };
-   
     const [state,dispatch]=useReducer(reducer,initialstate);
 
     return(<Fragment>
