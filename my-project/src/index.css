@@ -1,13 +1,20 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@import url("../node_modules/bootstrap/dist/css/bootstrap.min.css");
+/* Ensure list items display on the left */
+.list-style {
+  background-color: #007bff; /* Blue background */
+  padding: 10px;
+  border-radius: 5px;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.nav-item {
+  margin-bottom: 5px;
+}
+
+.nav-link {
+  color: white; /* White text on blue background */
+  text-decoration: none;
+}
+
+.nav-link:hover {
+  text-decoration: underline; /* Add hover effect */
 }
