@@ -9,7 +9,7 @@ function Pages() {
             <Link to="/">Home</Link>
           </p>
           <p>
-            <Link to="/todo">Todo List</Link>
+            <Link to="/todo">Form</Link>
           </p>
           <p>
             <Link to="/count"> Counter</Link>
