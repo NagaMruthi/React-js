@@ -2,6 +2,7 @@ import React from "react";
 import './index.css';
 import { Outlet,Link } from "react-router-dom";
 function Layout() {
+  
   return (
     <div className="d-flex">
       {/* Sidebar */}
@@ -55,9 +56,9 @@ function Layout() {
                 Search
               </button>
             </form>
-            <button style={{backgroundColor:'green'}}>
+            <Link to='/login'  style={{backgroundColor:'green'}}>
                 Login
-            </button>
+            </Link>
           </div>
         </nav>
         <Outlet></Outlet>

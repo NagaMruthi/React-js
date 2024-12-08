@@ -1,30 +1,33 @@
 import React from "react";
-function Courses(){
-     const [Courses,setCourses]=React.useState([{
-       Name:"Introduction to AI",
-       Sub:'Learn The of AI and machine learnig' 
-     },
+import './App.css';
+
+function Courses() {
+  const [courses, setCourses] = React.useState([
     {
-        Name:'Data Science 101',
-        Sub:"Discover the world of data analysis and visualization"
+      Name: "Introduction to AI",
+      Sub: 'Learn the basics of AI and machine learning',
     },
-{
-    Name:'Neural Networks',
-    Sub:'Dive into the working of neural networks'
-}])
-    return(
-        <>
-        <ul>
-            {
-                Courses.map((res,i)=>{
-                    return(<><h3>{res.Name}</h3>
-                    <h6>{res.Sub}</h6>
-                        </>
-                    )
-                })
-            }
-        </ul>
-        </>
-    )
+    {
+      Name: 'Data Science 101',
+      Sub: "Discover the world of data analysis and visualization",
+    },
+    {
+      Name: 'Neural Networks',
+      Sub: 'Dive into the workings of neural networks',
+    },
+  ]);
+
+  return (
+    <div className="flex-container">
+      {courses.map((course, i) => (
+        <div className="course-card" key={i}>
+          <span>{course.Name}</span>
+          <br />
+          <span>{course.Sub}</span>
+        </div>
+      ))}
+    </div>
+  );
 }
+
 export default Courses;
