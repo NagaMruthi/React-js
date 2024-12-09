@@ -15,7 +15,7 @@ function Layout() {
             <Link className="nav-link active" to="/courses">Courses</Link>
           </li>
           <li className="nav-item">
-            <a className="nav-link active" href="#">Add a new Courses</a>
+            <Link className="nav-link active" to='/add'>Add a new Courses</Link>
           </li>
           <li className="nav-item">
             <a className="nav-link active" href="#">Notifications</a>
@@ -45,7 +45,7 @@ function Layout() {
         {/* Top Search Bar and Login Button */}
         <nav className="navbar navbar-light bg-light">
           <div className="container-fluid">
-            <form className="d-flex w-75 mx-auto">
+            <form className="d-flex w-15 mx-auto">
               <input
                 className="form-control me-2"
                 type="search"
@@ -56,9 +56,6 @@ function Layout() {
                 Search
               </button>
             </form>
-            <Link to='/login'  style={{backgroundColor:'green'}}>
-                Login
-            </Link>
           </div>
         </nav>
         <Outlet></Outlet>
