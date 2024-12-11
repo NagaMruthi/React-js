@@ -1,27 +1,28 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
-function Login() {
+function Login(props) {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [courses, setCourses] = useState([]);
-  const [newCourse, setNewCourse] = useState("");
+  const [newCourse, setNewCourse] = useState([]);
+  const [courseName, setCourseName] = useState("");
+  const [courseSub, setCourseSub] = useState("");
+
+  useEffect(() => {
+    // Send newCourse to parent whenever it updates
+    props.data(newCourse);
+  }, [newCourse]); // Dependency array ensures it runs only when newCourse changes
 
   function handleLogin() {
     alert("Login Successful");
-    setIsLoggedIn(true); // Update state to logged in
-  }
-
-  function handleLogout() {
-    alert("Logout Successful");
-    setIsLoggedIn(false); // Update state to logged out
-    setCourses([]); // Clear courses on logout
+    setIsLoggedIn(true);
   }
 
   function handleAddCourse() {
-    if (newCourse.trim() !== "") {
-      setCourses([...courses, newCourse]);
-      setNewCourse(""); // Clear input field
+    if (courseName && courseSub) {
+      setNewCourse([...newCourse, { Name: courseName, Sub: courseSub }]);
+      setCourseName(""); // Clear input field
+      setCourseSub("");  // Clear input field
     } else {
-      alert("Course name cannot be empty!");
+      alert("Please fill in all fields");
     }
   }
 
@@ -51,9 +52,22 @@ function Login() {
             <div>
               <input
                 type="text"
-                value={newCourse}
+                value={courseName}
+                onChange={(e) => setCourseName(e.target.value)}
                 placeholder="Add a new course"
-                onChange={(e) => setNewCourse(e.target.value)}
+                style={{
+                  width: "100%",
+                  padding: "8px",
+                  marginBottom: "10px",
+                  borderRadius: "4px",
+                  border: "1px solid #ccc",
+                }}
+              />
+              <input
+                type="text"
+                value={courseSub}
+                onChange={(e) => setCourseSub(e.target.value)}
+                placeholder="Add Subtitle"
                 style={{
                   width: "100%",
                   padding: "8px",
@@ -77,31 +91,6 @@ function Login() {
                 Add Course
               </button>
             </div>
-            {courses.length > 0 && (
-              <div style={{ marginTop: "20px" }}>
-                <h4>Your Courses:</h4>
-                <ul>
-                  {courses.map((course, index) => (
-                    <li key={index}>{course}</li>
-                  ))}
-                </ul>
-              </div>
-            )}
-            <button
-              onClick={handleLogout}
-              style={{
-                marginTop: "10px",
-                width: "100%",
-                padding: "10px",
-                backgroundColor: "#FF4D4F",
-                color: "white",
-                border: "none",
-                borderRadius: "4px",
-                cursor: "pointer",
-              }}
-            >
-              Logout
-            </button>
           </>
         ) : (
           <>
