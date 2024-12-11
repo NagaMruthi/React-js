@@ -2,10 +2,7 @@ import React,{Link} from "react";
 import './App.css';
 
 function Courses() {
-  var getemp=(emps)=>{
-    console.clear()
-    console.log(emps);
-  }
+  
   const [courses, setCourses] = React.useState([
     {
       Name: "Introduction to AI",

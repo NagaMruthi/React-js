@@ -6,10 +6,11 @@ function Login(props) {
   const [courseName, setCourseName] = useState("");
   const [courseSub, setCourseSub] = useState("");
 
-  useEffect(() => {
-    // Send newCourse to parent whenever it updates
-    props.data(newCourse);
-  }, [newCourse]); // Dependency array ensures it runs only when newCourse changes
+  // useEffect(() => {
+    // if (typeof props.data === "function") {
+      props.data(newCourse);
+    // }
+  // },[newCourse]);
 
   function handleLogin() {
     alert("Login Successful");
@@ -19,8 +20,8 @@ function Login(props) {
   function handleAddCourse() {
     if (courseName && courseSub) {
       setNewCourse([...newCourse, { Name: courseName, Sub: courseSub }]);
-      setCourseName(""); // Clear input field
-      setCourseSub("");  // Clear input field
+      setCourseName("");
+      setCourseSub("");
     } else {
       alert("Please fill in all fields");
     }
