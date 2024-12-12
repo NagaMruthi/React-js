@@ -6,11 +6,11 @@ function Login(props) {
   const [courseName, setCourseName] = useState("");
   const [courseSub, setCourseSub] = useState("");
 
-  // useEffect(() => {
-    // if (typeof props.data === "function") {
+  useEffect(() => {
+    if (typeof props.data === "function") {
       props.data(newCourse);
-    // }
-  // },[newCourse]);
+    }
+  },[newCourse]);
 
   function handleLogin() {
     alert("Login Successful");
@@ -53,6 +53,7 @@ function Login(props) {
             <div>
               <input
                 type="text"
+                name="name"
                 value={courseName}
                 onChange={(e) => setCourseName(e.target.value)}
                 placeholder="Add a new course"
@@ -67,6 +68,7 @@ function Login(props) {
               <input
                 type="text"
                 value={courseSub}
+                name="sub"
                 onChange={(e) => setCourseSub(e.target.value)}
                 placeholder="Add Subtitle"
                 style={{
@@ -99,6 +101,7 @@ function Login(props) {
             <label>User Email:</label>
             <input
               type="email"
+              name="Email"
               placeholder="Enter Email"
               style={{
                 width: "100%",
@@ -112,6 +115,7 @@ function Login(props) {
             <label>User Password:</label>
             <input
               type="password"
+              name="password"
               placeholder="Enter Password"
               style={{
                 width: "100%",
