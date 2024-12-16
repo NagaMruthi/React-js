@@ -1,30 +1,28 @@
 import React, { useState } from "react";
+import { useGetallcoursesQuery } from "./services/Api";
 
 function Home() {
-    const [employees, setEmployees] = useState([]);
-
-    const handleData = (emps) => {
-        console.log("Received employee data:", emps);
-        setEmployees(emps); // Example of setting state with employee data
-    };
-
-    return (
-        <div>
-            <h1>Welcome to the Project</h1>
-            <p>This is the home page of the project.</p>
-            <div>
-                {employees.length > 0 ? (
-                    <ul>
-                        {employees.map((emp, index) => (
-                            <li key={index}>{emp.name}</li>
-                        ))}
-                    </ul>
-                ) : (
-                    <p>No employees to display</p>
-                )}
-            </div>
-        </div>
-    );
+    const { data, isLoading } = useGetallcoursesQuery();
+   
+     return (
+       <>
+         {isLoading && <h1 style={{ textAlign: "center", color: "#555" }}>Loading...</h1>}
+         <div >
+           {/* <h2 style={{ textAlign: "center", color: "#555" }}>Courses</h2> */}
+           <div >
+             {!isLoading &&
+               data &&
+               data.map((course, index) => (
+                 <div  key={index}>
+                   <h3>{course.title}</h3>
+                   <p>{course.subtitle}</p>
+                 </div>
+               ))}
+           </div>
+         </div>
+       </>
+     );
+   
 }
 
 export default Home;

@@ -1,38 +1,58 @@
 import React, { useState } from "react";
-import Courses from "./Courses";
+import { useAddcoursesMutation } from "./services/Api";
 
 function Login() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const [title, setTitle] = useState("");
+  const [subtitle, setSubtitle] = useState("");
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [formData, setFormData] = useState({ title: "", subtitle: "" });
+  const [addCourse] = useAddcoursesMutation();
 
-  function handleLogin() {
+  const handleLogin = () => {
+    if (!email || !password) {
+      setError("Please fill in both email and password.");
+      return;
+    }
+    if (!/\S+@\S+\.\S+/.test(email)) {
+      setError("Please enter a valid email.");
+      return;
+    }
+    setError("");
+    setIsLoggedIn(true); // Mark as logged in
     alert("Login Successful");
-    setIsLoggedIn(true);
-  }
+  };
 
-  function handleInputChange(event) {
-    const { name, value } = event.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
-  }
+  const handleAddCourse = async () => {
+    if (!title || !subtitle) {
+      alert("Please fill in both Title and Subtitle.");
+      return;
+    }
 
-  function handleSubmitPostLogin() {
-    alert(`Title: ${formData.title}\nSubtitle: ${formData.subtitle}`);
-  }
+    try {
+      await addCourse({ title, subtitle }).unwrap();
+      alert("Course added successfully!");
+      setTitle("");
+      setSubtitle("");
+    } catch (err) {
+      alert("Error adding course.");
+      console.error(err);
+    }
+  };
 
   return (
     <div
       style={{
         display: "flex",
-        justifyContent: "center",
+        flexDirection: "column",
         alignItems: "center",
         height: "100vh",
         backgroundColor: "#f0f0f0",
       }}
     >
-      {isLoggedIn ? (
+      {!isLoggedIn ? (
+
         <div
           style={{
             padding: "20px",
@@ -40,16 +60,30 @@ function Login() {
             backgroundColor: "white",
             boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)",
             width: "300px",
+            marginBottom: "20px",
           }}
         >
-          <h3 style={{ textAlign: "center" }}>Post Login Form</h3>
-          <label>Title:</label>
+          <h3 style={{ textAlign: "center" }}>Login Form</h3>
+          {error && (
+            <div
+              style={{
+                color: "red",
+                marginBottom: "10px",
+                textAlign: "center",
+                fontSize: "14px",
+              }}
+            >
+              {error}
+            </div>
+          )}
+          <label htmlFor="email">User Email:</label>
           <input
-            type="text"
-            name="title"
-            value={formData.title}
-            onChange={handleInputChange}
-            placeholder="Enter Title"
+            id="email"
+            type="email"
+            name="email"
+            placeholder="Enter Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
             style={{
               width: "100%",
               padding: "8px",
@@ -58,14 +92,14 @@ function Login() {
               border: "1px solid #ccc",
             }}
           />
-          <br />
-          <label>Subtitle:</label>
+          <label htmlFor="password">User Password:</label>
           <input
-            type="text"
-            name="subtitle"
-            value={formData.subtitle}
-            onChange={handleInputChange}
-            placeholder="Enter Subtitle"
+            id="password"
+            type="password"
+            name="password"
+            placeholder="Enter Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
             style={{
               width: "100%",
               padding: "8px",
@@ -74,9 +108,8 @@ function Login() {
               border: "1px solid #ccc",
             }}
           />
-          <br />
           <button
-            onClick={handleSubmitPostLogin}
+            onClick={handleLogin}
             style={{
               width: "100%",
               padding: "10px",
@@ -86,7 +119,6 @@ function Login() {
               borderRadius: "4px",
               cursor: "pointer",
             }}
-            
           >
             Submit
           </button>
@@ -101,12 +133,15 @@ function Login() {
             width: "300px",
           }}
         >
-          <h3 style={{ textAlign: "center" }}>Login Form</h3>
-          <label>User Email:</label>
+          <h3 style={{ textAlign: "center" }}>Add Course</h3>
+          <label htmlFor="title">Title:</label>
           <input
-            type="email"
-            name="Email"
-            placeholder="Enter Email"
+            id="title"
+            type="text"
+            name="title"
+            placeholder="Enter Title"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
             style={{
               width: "100%",
               padding: "8px",
@@ -115,12 +150,14 @@ function Login() {
               border: "1px solid #ccc",
             }}
           />
-          <br />
-          <label>User Password:</label>
+          <label htmlFor="subtitle">Subtitle:</label>
           <input
-            type="password"
-            name="password"
-            placeholder="Enter Password"
+            id="subtitle"
+            type="text"
+            name="subtitle"
+            placeholder="Enter Subtitle"
+            value={subtitle}
+            onChange={(e) => setSubtitle(e.target.value)}
             style={{
               width: "100%",
               padding: "8px",
@@ -129,20 +166,19 @@ function Login() {
               border: "1px solid #ccc",
             }}
           />
-          <br />
           <button
-            onClick={handleLogin}
+            onClick={handleAddCourse}
             style={{
               width: "100%",
               padding: "10px",
-              backgroundColor: "#007BFF",
+              backgroundColor: "#28a745",
               color: "white",
               border: "none",
               borderRadius: "4px",
               cursor: "pointer",
             }}
           >
-            Submit
+            Add Course
           </button>
         </div>
       )}

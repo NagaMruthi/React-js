@@ -1,34 +1,29 @@
 import React from "react";
-import './App.css';
+import "./App.css";
+import { useGetallcoursesQuery } from "./services/Api";
 
 function Courses() {
-  
-  const [courses, setCourses] = React.useState([
-    {
-      Name: "Introduction to AI",
-      Sub: 'Learn the basics of AI and machine learning',
-    },
-    {
-      Name: 'Data Science 101',
-      Sub: "Discover the world of data analysis and visualization",
-    },
-    {
-      Name: 'Neural Networks',
-      Sub: 'Dive into the workings of neural networks',
-    },
-  ]);
+  const { data, isLoading } = useGetallcoursesQuery();
 
-  return (
-    <div className="flex-container">
-      {courses.map((course, i) => (
-        <div className="course-card" key={i}>
-          <span>{course.Name}</span>
-          <br />
-          <span>{course.Sub}</span>
+  return ( 
+     <>
+  
+       {isLoading && <h1 style={{ textAlign: "center", color: "#555" }}>Loading...</h1>}
+      <div >
+        <h2 style={{ textAlign: "center", color: "#555" }}>Courses</h2>
+        <div >
+          {!isLoading &&
+            data &&
+            data.map((course, index) => (
+              <div  key={index}>
+                <h3>{course.title}</h3>
+                <p>{course.subtitle}</p>
+              </div>
+            ))}
         </div>
-      ))}
-    </div>
-  );
+      </div>
+    </> 
+   );
 }
 
 export default Courses;

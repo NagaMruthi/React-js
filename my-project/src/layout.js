@@ -9,7 +9,7 @@ function Layout() {
       <div className="sidebar" style={{ width: '250px', backgroundColor: '#f8f9fa', position: 'fixed', top: '0', bottom: '0', left: '0', padding: '20px' }}>
         <ul className="navbar-nav me-auto mb-2 mb-lg-0">
           <li className="nav-item">
-            <Link className="nav-link active" to='/'>Home</Link>
+            <Link className="nav-link active" to='/home'>Home</Link>
           </li>
           <li className="nav-item">
             <Link className="nav-link active" to="/courses">Courses</Link>
