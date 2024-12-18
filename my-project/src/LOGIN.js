@@ -7,6 +7,7 @@ function Login() {
   const [error, setError] = useState("");
   const [title, setTitle] = useState("");
   const [subtitle, setSubtitle] = useState("");
+  const [pdf, setPdf] = useState("");
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [addCourse] = useAddcoursesMutation();
 
@@ -25,13 +26,13 @@ function Login() {
   };
 
   const handleAddCourse = async () => {
-    if (!title || !subtitle) {
+    if (!title || !subtitle || !pdf) {
       alert("Please fill in both Title and Subtitle.");
       return;
     }
 
     try {
-      await addCourse({ title, subtitle }).unwrap();
+      await addCourse({ title, subtitle,pdf }).unwrap();
       alert("Course added successfully!");
       setTitle("");
       setSubtitle("");
@@ -158,6 +159,21 @@ function Login() {
             placeholder="Enter Subtitle"
             value={subtitle}
             onChange={(e) => setSubtitle(e.target.value)}
+            style={{
+              width: "100%",
+              padding: "8px",
+              marginBottom: "10px",
+              borderRadius: "4px",
+              border: "1px solid #ccc",
+            }}
+          />
+           <input
+            id="subtitle"
+            type="file"
+            name="pdf"
+            placeholder="pdf"
+            value={pdf}
+            onChange={(e) => setPdf(e.target.value)}
             style={{
               width: "100%",
               padding: "8px",

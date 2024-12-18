@@ -14,6 +14,18 @@
       "id": "358e",
       "title": "html",
       "subtitle": "web page"
+    },
+    {
+      "id": "a3cd",
+      "title": "ai ",
+      "subtitle": "ai",
+      "pdf": "https://example.com/java-basics.pdf"
+    },
+    {
+      "id": "054e",
+      "title": "java",
+      "subtitle": "oops",
+      "pdf": "C:\\fakepath\\Java Object-Oriented Programming.pdf"
     }
   ]
 }
