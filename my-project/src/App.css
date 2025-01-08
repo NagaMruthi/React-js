@@ -38,24 +38,35 @@
 }
 .continer{
   display: flex;
+  flex-wrap: nowrap;
   background-color: rgb(255, 0, 195);
-  width: 50%;
+  width: 100%;
+
   border: 1px solid #e9eff3;
   margin-top: 10px;
   margin-left: 3px;
   margin-bottom: 10px;
 }
-.continer>div{
+
+.f-1{
   text-align: center;
   border: 1px solid black;
-
-}
-.f-1{
-  width: 50%;
   color: aqua;
+  margin: 10px;
   box-shadow:4px 4px 8px rgba(4,2,8,0.8);
 }
 .f-2{
-  width: 50%;
-  color: aqua;
+  justify-items: center;
+  border: 1px solid black;
+  margin: 10px;
+  background-color:green ;
+  color:red;
+}
+.f-3{
+  margin: 10px;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid black;
+  background-color:green ;
+  color:blue;
 }
