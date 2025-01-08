@@ -36,3 +36,26 @@
     transform: rotate(360deg);
   }
 }
+.continer{
+  display: flex;
+  background-color: rgb(255, 0, 195);
+  width: 50%;
+  border: 1px solid #e9eff3;
+  margin-top: 10px;
+  margin-left: 3px;
+  margin-bottom: 10px;
+}
+.continer>div{
+  text-align: center;
+  border: 1px solid black;
+
+}
+.f-1{
+  width: 50%;
+  color: aqua;
+  box-shadow:4px 4px 8px rgba(4,2,8,0.8);
+}
+.f-2{
+  width: 50%;
+  color: aqua;
+}
