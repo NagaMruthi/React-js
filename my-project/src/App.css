@@ -36,3 +36,51 @@
     transform: rotate(360deg);
   }
 }
+/* open-page css*/
+.parent {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* Align items to the top */
+  width: 100%;
+  height: 1000px;
+}
+
+.f-1 {
+  width: 15%;
+  height: 800px;
+  background-color: gold;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center links horizontally */
+  padding: 30px;
+  border: solid black;
+  font-size: larger;
+}
+
+.f-2 {
+  width: 85%;
+  height: 800px;
+  background-color: aqua;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; /* Center content of .f-2 vertically */
+  gap: 10px;
+  padding: 10px;
+  border: solid black;
+}
+.f-1 a Link{
+  border: 2px solid #282c34; /* Border around the link */
+  padding: 8px 12px; /* Add some padding inside the link */
+  text-decoration: none; /* Remove the underline */
+  color: inherit; /* Inherit text color from parent */
+  display: inline-block; /* Allow padding to work and make it clickable */
+  margin-bottom: 10px; /* Add space between links */
+}
+
+.f-1 a Link:hover {
+  background-color: #282c34; /* Change background on hover */
+  color: white; /* Change text color on hover */
+}
+
+
