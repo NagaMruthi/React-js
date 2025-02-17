@@ -1,11 +1,11 @@
-import logo from './logo.svg';
 import './App.css';
-import Forms from './inputs';
-
+import ApiData from './api';
+import Main from './Main';
 function App() {
   return (
     <div className="App">
-      <Forms></Forms>
+      <Main></Main>
+      <ApiData></ApiData>
     </div>
   );
 }
